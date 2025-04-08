@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./css/widget.css">
+  <link rel="stylesheet" href="./css/setting.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap" rel="stylesheet">
+  <title>Trình Phát Nhạc</title>
+</head>
+<body>
+  <div class="container-wrap">
+    <div id="bg" class="bg">
+      <video id="bg-video" autoplay muted loop>
+        <source src="./video/background.mp4" type="video/mp4">
+      </video>
+      <div class="light-effect">
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+      </div>
+    </div>
+    <div class="card-wrap">
+      <header class="card-header">
+        <div class="card-header--title">
+          <i class="iconfont icon-music"></i>
+          <span id="song-title">Trình phát nhạc</span>
+        </div>
+        <div class="card-header--options">
+          <i id="setting-menu" class="iconfont icon-menu--fill" style="display: none;"></i>
+        </div>
+      </header>
+      <main class="card-body">
+        <canvas id="music-canvas"></canvas>
+        <div class="lrc-box">
+          <section id="music-lrc"></section>
+        </div>
+      </main>
+      <aside class="info-widget">
+        <div class="progress-container">
+          <div class="progress-bar" id="music-progress">
+            <div class="progress-current"></div>
+            <div class="progress-handle"></div>
+          </div>
+        </div>
+        <div id="info-cover"></div>
+
+      </aside>
+      <aside class="time-widget">
+        <span id="time-minute">00</span>
+        <span>:</span>
+        <span id="time-second">00</span>
+      </aside>
+      <aside class="control-widget">
+        <div class="control-btn" id="prevBtn">
+          <i class="iconfont icon-play-previous"></i>
+        </div>
+        <div class="control-btn animation" id="playBtn">
+          <i class="iconfont icon-play1"></i>
+        </div>
+        <div class="control-btn" id="nextBtn">
+          <i class="iconfont icon-play-next"></i>
+        </div>
+      </aside>
+    </div>
+  </div>
+  
+  <script src="./js/DomVisual.js"></script>
+  <script src="./js/AudioVisual.js"></script>
+  <script src="./js/index.js"></script>
+</body>
+</html> 

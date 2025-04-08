@@ -1,0 +1,307 @@
+
+:root {
+    --theme-color: #ffffff;
+    --main-bg-color: rgba(0, 0, 0, 0.4);
+    --accent-color: rgba(255, 255, 255, 0.15);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+  }
+  
+  .container-wrap {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    min-width: calc(1093px);
+    min-height: calc(615px);
+    max-width: calc(2048px);
+    max-height: calc(1536px);
+    background-color: #2e323f;
+    overflow: hidden;
+  }
+  
+  .container-wrap .bg {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .container-wrap #bg-video {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    z-index: 0;
+  }
+  
+  .container-wrap .card-wrap {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 80%;
+    height: 80%;
+    color: var(--theme-color);
+    border-radius: 46px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset,
+      0 0 30px rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+    backdrop-filter: blur(4px);
+  
+    animation: cardAppear 0.8s ease-out;
+  }
+  
+  .container-wrap .card-wrap::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle at 20% 20%,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0) 80%
+    );
+    pointer-events: none;
+  }
+  
+  @keyframes cardAppear {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .card-header {
+    display: flex;
+    align-items: center;
+    height: 120px;
+    padding: 40px 23px;
+    backdrop-filter: blur(10px);
+  
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .card-header--title {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    line-height: 32px;
+    font-size: 32px;
+    font-weight: bolder;
+    font-family: monospace;
+    overflow: hidden;
+    padding-right: 20px;
+    position: relative;
+    animation: titleGlow 4s infinite alternate;
+  }
+  
+  .card-header--title .iconfont.icon-music {
+    margin-right: 20px;
+    font-size: 30px;
+    animation: pulseIcon 2s infinite alternate;
+  }
+  
+  @keyframes pulseIcon {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .card-header--title #song-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    user-select: none;
+  }
+  
+  @keyframes titleGlow {
+    0% {
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    }
+    100% {
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.4),
+        0 0 20px rgba(255, 255, 255, 0.2), 1px 1px 3px rgba(0, 0, 0, 0.7);
+    }
+  }
+  
+  .card-header--options {
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .card-header--options #setting-menu {
+    transition: all 0.3s linear;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bolder;
+  }
+  
+  .card-header--options #setting-menu:hover {
+    opacity: 0.7;
+  }
+  
+  .card-body {
+    width: 100%;
+    height: calc(100% - 120px);
+    border-radius: 0 0 46px 46px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .card-body canvas#music-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+    transition: filter 0.3s ease;
+  }
+  
+  .card-body .lrc-box {
+    width: 100%;
+    height: 120px;
+    position: absolute;
+    top: 10%;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    margin: 0 auto;
+    z-index: 10;
+    border-radius: 20px;
+    width: 80%;
+  }
+  
+  #music-lrc {
+    width: 100%;
+    transition: transform 0.5s ease;
+    padding: 80px 0;
+    text-align: center;
+  }
+  
+  #music-lrc p {
+    height: 40px;
+    line-height: 40px;
+    margin: 12px 0;
+    padding: 0 15px;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.6);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: normal;
+    transition: all 0.5s ease;
+    opacity: 0.5;
+    transform: scale(0.9);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  
+  #music-lrc p.previous {
+    color: rgba(255, 255, 255, 0.8);
+    opacity: 0.7;
+    transform: scale(0.95);
+    font-weight: normal;
+  }
+  
+  #music-lrc p.current {
+    font-size: 22px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 1);
+    opacity: 1;
+    transform: scale(1);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 1px 3px rgba(0, 0, 0, 0.7);
+  }
+  
+  #music-lrc p.next {
+    color: rgba(255, 255, 255, 0.8);
+    opacity: 0.7;
+    transform: scale(0.95);
+    font-weight: normal;
+  }
+  
+  .info-widget,
+  .time-widget,
+  .control-widget {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  }
+  
+  /* Responsive cho điện thoại di động */
+  @media screen and (max-width: 768px) {
+    .container-wrap {
+      min-width: unset;
+      min-height: unset;
+    }
+  
+    .container-wrap .card-wrap {
+      width: 95%;
+      height: 95%;
+      border-radius: 20px;
+    }
+  
+    .card-header {
+      height: 70px;
+      padding: 15px;
+    }
+  
+    .card-header--title {
+      font-size: 18px;
+      line-height: 20px;
+    }
+  
+    .card-header--title .iconfont.icon-music {
+      margin-right: 10px;
+      font-size: 18px;
+    }
+  
+    .card-body {
+      height: calc(100% - 70px);
+    }
+  
+    .card-body .lrc-box {
+      width: 90%;
+      top: 5%;
+    }
+  
+    #music-lrc p {
+      height: 30px;
+      line-height: 30px;
+      margin: 8px 0;
+      padding: 0 10px;
+      font-size: 16px;
+    }
+  
+    #music-lrc p.current {
+      font-size: 18px;
+    }
+  }
+  
+  /* Responsive cho điện thoại nhỏ */
+  @media screen and (max-width: 480px) {
+    .card-header--title {
+      font-size: 16px;
+    }
+  
+    #music-lrc p {
+      font-size: 14px;
+    }
+    .card-body .lrc-box {
+      top: 50%;
+    }
+    #music-lrc p.current {
+      font-size: 16px;
+    }
+  }
+  
