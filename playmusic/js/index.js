@@ -7,6 +7,12 @@ window.onload = function () {
         url: "./nhac/baihat1.mp3",
         cover: "./images/cover1.png",
         lrc: "./lrc/baihat1.lrc"
+      },
+      {
+        title: "Melanie Martinez - Play Date ",
+        url: "./nhac/baihat2.mp3",
+        cover: "./images/cover2.png",
+        lrc: "./lrc/baihat2.lrc"
       }
     ];
     
@@ -19,7 +25,6 @@ window.onload = function () {
     dv = new DomVisual([
       './images/cover1.png',
       './images/cover2.png',
-      './images/cover3.png',
     ]);
     
     // Khởi tạo Audio
